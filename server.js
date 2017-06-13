@@ -9,6 +9,8 @@ var routes = require("./routes/routes");
 var PORT = process.env.PORT || 3000;
 mongoose.Promise = bluebird;
 var app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + "/public"));
@@ -17,7 +19,7 @@ app.use("/", routes);
 var db = process.env.MONGODB_URI || "mongodb://localhost/nytreact";
 
 // Connect mongoose to our database
-mongoose.connect(db, function(error) {
+mongoose.connect("mongodb://heroku_3wc0zmvs:ccofgd3i3venc1fs0ug7lrm8fd@ds123752.mlab.com:23752/heroku_3wc0zmvs", function(error) {
   // Log any errors connecting with mongoose
   if (error) {
     console.error(error);
@@ -26,6 +28,14 @@ mongoose.connect(db, function(error) {
   else {
     console.log("mongoose connection is successful");
   }
+});
+
+io.on('connection', function (socket) {
+  console.log('socket connected on ' + socket.id)
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
 });
 
 // Start the server
