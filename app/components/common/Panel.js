@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 
 class Panel extends Component {
-	// saveArticle(article){
-	// 	API.saveArticle(article).then($(`#${this.props.id}`).attr(className, "fa fa-star gold"))
-	// }
+	saveArticle(article){
+		API.saveArticle(article).then($(`#${this.props.id}`).attr(className, "fa fa-star gold"))
+	}
 	deleteArticle(id){
 		API.deleteArticle(id).then(this.props.getArticles);
 	}
