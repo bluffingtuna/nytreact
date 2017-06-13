@@ -3,7 +3,7 @@ import API from "../../utils/API";
 
 class Panel extends Component {
 	saveArticle(article){
-		API.saveArticle(article).then($(`#${this.props.id}`).attr(className, "fa fa-star gold"))
+		API.saveArticle(article).then($(`#${this.props.id}`).attr("class", "fa fa-star gold"))
 	}
 	deleteArticle(id){
 		API.deleteArticle(id).then(this.props.getArticles);
@@ -15,11 +15,11 @@ class Panel extends Component {
 		          <div className="panel-body">
 		            
 		            <h5><i
-		            	// onClick={()=>this.saveArticle(this.props)}
+		            	onClick={()=>this.saveArticle(this.props)}
 		              style={styles.favoriteStyle}
 		              className={this.props.saved ? "fa fa-star gold" : "fa fa-star-o"}
 		              aria-hidden="true"
-		              id="save"
+		              id={this.props.id}
 		            /> {this.props.title}
 
 		            {this.props.saved? <i
