@@ -9,8 +9,8 @@ var routes = require("./routes/routes");
 var PORT = process.env.PORT || 3000;
 mongoose.Promise = bluebird;
 var app = express();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+// const http = require('http').Server(app);
+// const io = require('socket.io')(http);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + "/public"));
@@ -30,13 +30,13 @@ mongoose.connect("mongodb://heroku_3wc0zmvs:ccofgd3i3venc1fs0ug7lrm8fd@ds123752.
   }
 });
 
-io.on('connection', function (socket) {
-  console.log('socket connected on ' + socket.id)
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
-  });
-});
+// io.on('connection', function (socket) {
+//   console.log('socket connected on ' + socket.id)
+//   socket.emit('news', { hello: 'world' });
+//   socket.on('my other event', function (data) {
+//     console.log(data);
+//   });
+// });
 
 // Start the server
 app.listen(PORT, function() {

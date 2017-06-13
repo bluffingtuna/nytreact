@@ -18,15 +18,15 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <script>
-    var socket = io();
-    socket.on('news', function(data) {
-        console.log(data);
-        socket.emit('my other event', {
-            my: 'data'
-        });
-    });
-    $('#save').click( e => socket.emit('event') );
-	socket.on('event', data => alert("New article saved!") );
+ //    var socket = io();
+ //    socket.on('news', function(data) {
+ //        console.log(data);
+ //        socket.emit('my other event', {
+ //            my: 'data'
+ //        });
+ //    });
+ //    $('#save').click( e => socket.emit('event') );
+	// socket.on('event', data => alert("New article saved!") );
     </script>
 </body>
 
