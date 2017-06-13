@@ -19,7 +19,7 @@ app.use("/", routes);
 var db = process.env.MONGODB_URI || "mongodb://localhost/nytreact";
 
 // Connect mongoose to our database
-mongoose.connect("mongodb://heroku_3wc0zmvs:ccofgd3i3venc1fs0ug7lrm8fd@ds123752.mlab.com:23752/heroku_3wc0zmvs", function(error) {
+mongoose.connect(db, function(error) {
   // Log any errors connecting with mongoose
   if (error) {
     console.error(error);
